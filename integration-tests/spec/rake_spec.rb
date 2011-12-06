@@ -17,7 +17,7 @@ remote_describe "rake tasks" do
   end
 
   def rake(cmd)
-    `#{jruby_binary} -S rake -f #{rakefile} #{cmd} 2>&1`
+    `#{jruby_binary} -S rake -f #{rakefile} #{cmd}`
   end
 
   def rakefile
