@@ -8,9 +8,9 @@ remote_describe "rake tasks" do
     puts "!!!!!!!!!!!!!!!!!!"
     puts "OUTPUT IS |#{output}|"
     puts jruby_binary
-    puts "#{jruby_binary} --help"
-    puts "#{jruby_binary} -S gem list"
-    puts "#{jruby_binary} -S rake --help"
+    puts `#{jruby_binary} --help`
+    puts `#{jruby_binary} -S gem list`
+    puts `#{jruby_binary} -S rake --help`
     puts "Rakefile is #{rakefile}"
     puts "!!!!!!!!!!!!!!!!!!"
     output.should include('sanity check passed')
