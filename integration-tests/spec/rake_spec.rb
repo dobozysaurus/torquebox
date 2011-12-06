@@ -5,12 +5,14 @@ remote_describe "rake tasks" do
 
   it "should work" do
     output = rake('integ:sanity_check --trace')
+    puts "!!!!!!!!!!!!!!!!!!"
+    puts output
+    puts "!!!!!!!!!!!!!!!!!!"
     output.should include('sanity check passed')
   end
 
   def rake(cmd)
-    full_cmd = "#{jruby_binary} -S rake -f #{File.dirname(__FILE__)}/../apps/rails3.1/basic/Rakefile #{cmd} 2>&1"
-    `#{full_cmd}`
+    `#{jruby_binary} -S rake -f #{File.dirname(__FILE__)}/../apps/rails3.1/basic/Rakefile #{cmd} 2>&1`
   end
 
 end
