@@ -38,6 +38,7 @@ module TorqueBox
                                                              ]
                                               })
         {
+          :torquebox_init => BlockEntry,
           :authentication => ThingWithOptionsEntry.with_settings( :validate => {
                                                                     :required => [:domain],
                                                                     :optional => [:credential]
@@ -127,6 +128,9 @@ module TorqueBox
               metadata['auth'][name] = data
             end
 
+          when 'torquebox_init' # runtime intialization
+            metadata[entry_name] = entry_data
+          
           when 'job' # => jobs:
             entry_data.each do |klass, data|
               name = data.delete( :name ) || unique_name( klass.to_s, metadata['jobs'].keys )
